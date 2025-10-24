@@ -1,1 +1,1 @@
-
+Human detection and tracking are vital tasks in computer vision, enabling intelligent surveillance, crowd monitoring, and autonomous navigation. With the advent of powerful yet compact embedded AI hardware such as the NVIDIA Jetson Nano, it has become possible to perform real-time inference at the edge. The motivation behind this work is to develop a lightweight, accurate, and deployable solution for real-time human tracking that maintains high frame rates and reliability under constrained computational resources.
