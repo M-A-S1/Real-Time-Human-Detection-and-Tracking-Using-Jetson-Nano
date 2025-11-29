@@ -1,63 +1,73 @@
-# Real-Time Human Detection and Tracking  
-### Using State-of-the-Art Methods on Laptop & FastMOT Deployment on Jetson Nano
+# 🧍‍♂️ Real-Time Human Detection & Tracking  
+### Using State-of-the-Art Models on Laptop & FastMOT Deployment on Jetson Nano
 
-Human detection and tracking are essential components in modern computer vision systems, supporting applications such as intelligent surveillance, crowd analytics, and autonomous navigation. This project benchmarks **state-of-the-art human tracking performance on a high-performance laptop**, and then deploys a lightweight, real-time optimized solution (**FastMOT**) on the **NVIDIA Jetson Nano** for edge-level comparison.
+## 🚀 Overview
+Human detection and tracking are essential tasks in computer vision, powering applications such as surveillance, robotics, autonomous navigation, and crowd analytics.
 
----
+This project evaluates **real-time multi-object human tracking** across two environments:
 
-## 🚀 Project Overview
+1. **Laptop (RTX GPU):**  
+   Running state-of-the-art **YOLOv8 + BYTETracker** for maximum accuracy and smooth tracking.
 
-This repository contains two parts:
+2. **Jetson Nano (Edge Device):**  
+   Deploying the optimized **FastMOT** pipeline to achieve real-time performance under computational constraints.
 
-### **1. State-of-the-Art Tracking on Laptop (YOLOv8 + ByteTrack)**  
-We first implemented a modern tracking pipeline using:
-
-- **YOLOv8** for real-time detection  
-- **ByteTrack** for multi-object tracking  
-- Tested on an NVIDIA RTX-4060 laptop  
-- Achieved smooth, stable tracking in live videos  
-
-This establishes a **performance baseline** on a powerful machine.
-
-### **2. Jetson Nano Deployment — FastMOT (Upcoming)**  
-The Jetson Nano cannot run heavy YOLOv8 + ByteTrack models at real-time.  
-So, we will implement and benchmark:
-
-🔗 **FastMOT:** https://github.com/GeekAlexis/FastMOT  
-- Highly optimized pipeline for Jetson Nano  
-- TensorRT-accelerated  
-- Designed for edge devices  
-- Lower latency, higher FPS under limited compute  
-
-We will compare **Jetson Nano performance** against the **state-of-the-art laptop results** provided in this repo.
+The goal is to compare **accuracy, inference speed, and deployment feasibility** between high-end hardware and embedded systems.
 
 ---
 
-## 📹 State-of-the-Art Laptop Tracking Demo
+## 🎥 State-of-the-Art MOT Results (Laptop)
+The following demo shows YOLOv8 + BYTETracker running on a laptop GPU:
 
-Click the image below to watch the tracking output:
+![State of the Art Demo](src/state_of_the_art/out.gif)
 
-[![State of the Art Demo](docs/thumbnail.png)](https://raw.githubusercontent.com/M-A-S1/Real-Time-Human-Detection-and-Tracking-Using-Jetson-Nano/main/src/state_of_the_art/out.m4v)
-
-*If GitHub does not auto-play the video, it will download or play in a separate tab.*
-
----
-
-## 🧠 Technologies Used
-
-### **Laptop (Baseline)**
-- YOLOv8 (Ultralytics)
-- ByteTrack Tracker
-- OpenCV
-- Python 3.10
-
-### **Jetson Nano Deployment (Planned)**
-- FastMOT
-- TensorRT 8.x
-- CUDA-accelerated OpenCV
-- DeepStream-compatible pipeline
+This pipeline provides:
+- High-accuracy human detection  
+- Stable multi-object ID tracking  
+- Real-time performance on standard desktop hardware  
 
 ---
 
-## 📁 Repository Structure
+## 🧠 Laptop Pipeline (YOLOv8 + BYTETracker)
+
+Components used:
+- **YOLOv8 (Ultralytics):** Real-time deep-learning object detector  
+- **BYTETracker:** Robust low-ID-switch multi-object tracker  
+- **OpenCV:** Visualization and video processing  
+
+This configuration is close to state-of-the-art and ideal for benchmarking accuracy.
+
+---
+
+## 🟩 Jetson Nano Deployment (FastMOT)
+
+Since running YOLOv8 + BYTETracker directly on Jetson Nano is not practical, this project uses:
+
+🔗 **FastMOT:** https://github.com/GeekAlexis/FastMOT
+
+FastMOT is optimized for Jetson devices and provides:
+- TensorRT-accelerated detectors  
+- Lightweight tracking modules  
+- Real-time FPS even on Jetson Nano  
+
+The Jetson portion of this project will include:
+- Setup & installation guide  
+- TensorRT engine generation  
+- Real-time tracking demo on Nano  
+- Performance comparison against laptop results  
+
+---
+
+## 📊 Objective: Laptop vs Jetson Performance Comparison
+
+| Hardware | Detector | Tracker | FPS | Notes |
+|---------|----------|---------|-----|-------|
+| **Laptop (RTX GPU)** | YOLOv8n/s | BYTETracker | High | State-of-the-art accuracy |
+| **Jetson Nano** | FastMOT TensorRT model | DeepSORT / KLT / ReID | Moderate | Optimized for edge deployment |
+
+This comparison highlights the trade-off between **accuracy** and **real-time performance** across platforms.
+
+---
+
+## 📂 Repository Structure
 
