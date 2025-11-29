@@ -19,7 +19,7 @@ The goal is to compare **accuracy, inference speed, and deployment feasibility**
 ## 🎥 State-of-the-Art MOT Results (Laptop)
 The following demo shows YOLOv8 + BYTETracker running on a laptop GPU:
 
-![State of the Art Demo](src/state_of_the_art/out.gif)
+![State of the Art Demo](docs/ezgif-6e67e0fa21659c38.gif) 
 
 This pipeline provides:
 - High-accuracy human detection  
