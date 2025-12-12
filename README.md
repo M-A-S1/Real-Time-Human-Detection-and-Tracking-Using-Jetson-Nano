@@ -1,73 +1,83 @@
-# 🧍‍♂️ Real-Time Human Detection & Tracking  
-### Using State-of-the-Art Models on Laptop & FastMOT Deployment on Jetson Nano
+# 🧍‍♂️ Real-Time Human Detection & Tracking
 
 ## 🚀 Overview
-Human detection and tracking are essential tasks in computer vision, powering applications such as surveillance, robotics, autonomous navigation, and crowd analytics.
+Human detection and tracking are essential tasks in computer vision, enabling applications like surveillance, robotics, autonomous navigation, and crowd analytics.
 
 This project evaluates **real-time multi-object human tracking** across two environments:
 
-1. **Laptop (RTX GPU):**  
-   Running state-of-the-art **YOLOv8 + BYTETracker** for maximum accuracy and smooth tracking.
+1. **Laptop (RTX GPU):**
+   Running **YOLOv8 + BYTETracker** for high accuracy and smooth tracking.
 
-2. **Jetson Nano (Edge Device):**  
+2. **Jetson Nano (Edge Device):**
    Deploying the optimized **FastMOT** pipeline to achieve real-time performance under computational constraints.
 
 The goal is to compare **accuracy, inference speed, and deployment feasibility** between high-end hardware and embedded systems.
 
 ---
 
+## 🎯 Progress and Results
+
+### **1. Laptop (RTX GPU) Implementation**
+- **Pipeline:** YOLOv8 + BYTETracker
+- **Performance:** Achieved **30 FPS** with state-of-the-art accuracy.
+- **Outcome:** High-accuracy human detection and stable multi-object tracking.
+
+### **2. Jetson Nano Deployment**
+- **Initial Implementation:** FastMOT with pre-trained YOLOv4 (human dataset).
+  - **Performance:** 4-5 FPS, but poor accuracy in diverse scenes.
+- **First Optimization:** Trained YOLOv4-tiny on a custom dataset (600 images from Roboflow).
+  - **Performance:** Improved to **14-15 FPS**, but accuracy remained inconsistent.
+- **Final Optimization:** Trained YOLOv4-tiny on the COCO dataset (55,000 images).
+  - **Performance:** Achieved **15 FPS** with significantly improved accuracy.
+
+---
+
 ## 🎥 State-of-the-Art MOT Results (Laptop)
 The following demo shows YOLOv8 + BYTETracker running on a laptop GPU:
 
-![State of the Art Demo](docs/ezgif-6e67e0fa21659c38.gif) 
+![State of the Art Demo](docs/ezgif-6e67e0fa21659c38.gif)
 
 This pipeline provides:
-- High-accuracy human detection  
-- Stable multi-object ID tracking  
-- Real-time performance on standard desktop hardware  
+- High-accuracy human detection
+- Stable multi-object ID tracking
+- Real-time performance on standard desktop hardware
 
 ---
 
 ## 🧠 Laptop Pipeline (YOLOv8 + BYTETracker)
-
-Components used:
-- **YOLOv8 (Ultralytics):** Real-time deep-learning object detector  
-- **BYTETracker:** Robust low-ID-switch multi-object tracker  
-- **OpenCV:** Visualization and video processing  
+**Components:**
+- **YOLOv8 (Ultralytics):** Real-time deep-learning object detector
+- **BYTETracker:** Robust low-ID-switch multi-object tracker
+- **OpenCV:** Visualization and video processing
 
 This configuration is close to state-of-the-art and ideal for benchmarking accuracy.
 
 ---
 
 ## 🟩 Jetson Nano Deployment (FastMOT)
+Since running YOLOv8 + BYTETracker directly on Jetson Nano is impractical, this project uses:
 
-Since running YOLOv8 + BYTETracker directly on Jetson Nano is not practical, this project uses:
+🔗 **[FastMOT](https://github.com/GeekAlexis/FastMOT)**
 
-🔗 **FastMOT:** https://github.com/GeekAlexis/FastMOT
-
-FastMOT is optimized for Jetson devices and provides:
-- TensorRT-accelerated detectors  
-- Lightweight tracking modules  
-- Real-time FPS even on Jetson Nano  
-
-The Jetson portion of this project will include:
-- Setup & installation guide  
-- TensorRT engine generation  
-- Real-time tracking demo on Nano  
-- Performance comparison against laptop results  
+**Features:**
+- TensorRT-accelerated detectors
+- Lightweight tracking modules
+- Real-time FPS even on Jetson Nano
 
 ---
 
-## 📊 Objective: Laptop vs Jetson Performance Comparison
+## 📊 Performance Comparison: Laptop vs. Jetson Nano
 
-| Hardware | Detector | Tracker | FPS | Notes |
-|---------|----------|---------|-----|-------|
-| **Laptop (RTX GPU)** | YOLOv8n/s | BYTETracker | High | State-of-the-art accuracy |
-| **Jetson Nano** | FastMOT TensorRT model | DeepSORT / KLT / ReID | Moderate | Optimized for edge deployment |
+| Hardware          | Detector                     | Tracker       | FPS | Notes                          |
+|-------------------|------------------------------|---------------|-----|--------------------------------|
+| **Laptop (RTX GPU)** | YOLOv8n/s                    | BYTETracker   | 30  | State-of-the-art accuracy      |
+| **Jetson Nano**     | YOLOv4 (Pre-trained)         | DeepSORT/KLT  | 4-5 | Low accuracy                   |
+| **Jetson Nano**     | YOLOv4-tiny (600 images)      | DeepSORT/KLT  | 14-15 | Improved FPS, inconsistent accuracy |
+| **Jetson Nano**     | YOLOv4-tiny (COCO dataset)    | DeepSORT/KLT  | 15  | Balanced FPS and accuracy      |
 
-This comparison highlights the trade-off between **accuracy** and **real-time performance** across platforms.
+This comparison highlights the trade-offs between **accuracy** and **real-time performance** across platforms.
 
 ---
 
 ## 📂 Repository Structure
-
+*(Add your repository structure here if needed.)*
