@@ -72,10 +72,10 @@ Since running YOLOv8 + BYTETracker directly on Jetson Nano is impractical, this 
 
 ---
 
-## 🎥 Final Testing Video (YOLOv4-tiny on Jetson Nano)
-The following demo shows the final results of YOLOv4-tiny (trained on the COCO dataset) running on Jetson Nano:
+## 🎥 YOLOv4-tiny trained on COCO tested standalone on Colab 
+The following demo shows the final results of YOLOv4-tiny (trained on the COCO dataset) running on Colab:
 
-![Final Testing Video](docs/final_testing_yolov4tiny.gif)
+![Final Testing Video](output/yolov4_tiny.gif)
 
 ---
 
