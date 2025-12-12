@@ -32,6 +32,16 @@ The goal is to compare **accuracy, inference speed, and deployment feasibility**
 
 ---
 
+## 🧠 Laptop Pipeline (YOLOv8 + BYTETracker)
+**Components:**
+- **YOLOv8 (Ultralytics):** Real-time deep-learning object detector
+- **BYTETracker:** Robust low-ID-switch multi-object tracker
+- **OpenCV:** Visualization and video processing
+
+This configuration is close to state-of-the-art and ideal for benchmarking accuracy.
+
+---
+
 ## 🎥 State-of-the-Art MOT Results (Laptop)
 The following demo shows YOLOv8 + BYTETracker running on a laptop GPU:
 
@@ -41,16 +51,6 @@ This pipeline provides:
 - High-accuracy human detection
 - Stable multi-object ID tracking
 - Real-time performance on standard desktop hardware
-
----
-
-## 🧠 Laptop Pipeline (YOLOv8 + BYTETracker)
-**Components:**
-- **YOLOv8 (Ultralytics):** Real-time deep-learning object detector
-- **BYTETracker:** Robust low-ID-switch multi-object tracker
-- **OpenCV:** Visualization and video processing
-
-This configuration is close to state-of-the-art and ideal for benchmarking accuracy.
 
 ---
 
