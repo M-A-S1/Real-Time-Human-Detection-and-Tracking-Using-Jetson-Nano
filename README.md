@@ -27,7 +27,7 @@ The goal is to compare **accuracy, inference speed, and deployment feasibility**
   - **Performance:** 4-5 FPS, but poor accuracy in diverse scenes.
 - **First Optimization:** Trained YOLOv4-tiny on a custom dataset (600 images from Roboflow).
   - **Performance:** Improved to **14-15 FPS**, but accuracy remained inconsistent.
-- **Final Optimization:** Trained YOLOv4-tiny on the COCO dataset (55,000 images) using **Google Colab**.
+- **Final Optimization:** Trained YOLOv4-tiny on the COCO dataset (4299 images) using **Google Colab**.
   - **Performance:** Achieved **15 FPS** with significantly improved accuracy.
 
 ---
