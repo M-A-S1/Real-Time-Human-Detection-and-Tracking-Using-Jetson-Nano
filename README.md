@@ -55,14 +55,20 @@ This configuration is close to state-of-the-art and ideal for benchmarking accur
 ---
 
 ## 🟩 Jetson Nano Deployment (FastMOT)
-Since running YOLOv8 + BYTETracker directly on Jetson Nano is impractical, this project uses:
+Since running YOLOv8 + BYTETracker directly on Jetson Nano is impractical, this project uses **[FastMOT](https://github.com/GeekAlexis/FastMOT)**, a lightweight and optimized tracking framework for edge devices.
 
-🔗 **[FastMOT](https://github.com/GeekAlexis/FastMOT)**
+### **FastMOT Features:**
+- **TensorRT Acceleration:** Optimized for NVIDIA Jetson platforms, enabling faster inference.
+- **Lightweight Tracking:** Uses a combination of **DeepSORT**, **KLT (Kanade-Lucas-Tomasi)**, and **ReID (Re-Identification)** for efficient tracking.
+- **Modular Design:** Supports multiple detectors (YOLOv4, YOLOv4-tiny, etc.) and tracking algorithms.
+- **Real-Time Performance:** Designed to run efficiently on resource-constrained devices like the Jetson Nano.
 
-**Features:**
-- TensorRT-accelerated detectors
-- Lightweight tracking modules
-- Real-time FPS even on Jetson Nano
+### **FastMOT Pipeline:**
+1. **Detector:** YOLOv4-tiny (optimized for speed and accuracy balance).
+2. **Tracker:** DeepSORT or KLT for object association.
+3. **Post-Processing:** OpenCV for visualization and output.
+
+🔗 **[FastMOT GitHub Repository](https://github.com/GeekAlexis/FastMOT)**
 
 ---
 
@@ -73,9 +79,6 @@ Since running YOLOv8 + BYTETracker directly on Jetson Nano is impractical, this 
 | **Laptop (RTX GPU)** | YOLOv8n/s                    | BYTETracker   | 30  | State-of-the-art accuracy      |
 | **Jetson Nano**     | YOLOv4 (Pre-trained)         | DeepSORT/KLT  | 4-5 | Low accuracy                   |
 | **Jetson Nano**     | YOLOv4-tiny (600 images)      | DeepSORT/KLT  | 14-15 | Improved FPS, inconsistent accuracy |
-| **Jetson Nano**     | YOLOv4-tiny (COCO dataset)    | DeepSORT/KLT  | 14-15  | Balanced FPS and accuracy      |
+| **Jetson Nano**     | YOLOv4-tiny (COCO dataset)    | DeepSORT/KLT  | 15  | Balanced FPS and accuracy      |
 
 This comparison highlights the trade-offs between **accuracy** and **real-time performance** across platforms.
-
----
-
