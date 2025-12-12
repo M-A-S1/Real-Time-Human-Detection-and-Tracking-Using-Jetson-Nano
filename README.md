@@ -27,7 +27,7 @@ The goal is to compare **accuracy, inference speed, and deployment feasibility**
   - **Performance:** 4-5 FPS, but poor accuracy in diverse scenes.
 - **First Optimization:** Trained YOLOv4-tiny on a custom dataset (600 images from Roboflow).
   - **Performance:** Improved to **14-15 FPS**, but accuracy remained inconsistent.
-- **Final Optimization:** Trained YOLOv4-tiny on the COCO dataset (55,000 images).
+- **Final Optimization:** Trained YOLOv4-tiny on the COCO dataset (55,000 images) using **Google Colab**.
   - **Performance:** Achieved **15 FPS** with significantly improved accuracy.
 
 ---
@@ -72,13 +72,23 @@ Since running YOLOv8 + BYTETracker directly on Jetson Nano is impractical, this 
 
 ---
 
+## 🎥 Final Testing Video (YOLOv4-tiny on Jetson Nano)
+The following demo shows the final results of YOLOv4-tiny (trained on the COCO dataset) running on Jetson Nano:
+
+![Final Testing Video](docs/final_testing_yolov4tiny.gif)
+
+---
+
 ## 📊 Performance Comparison: Laptop vs. Jetson Nano
 
 | Hardware          | Detector                     | Tracker       | FPS | Notes                          |
 |-------------------|------------------------------|---------------|-----|--------------------------------|
 | **Laptop (RTX GPU)** | YOLOv8n/s                    | BYTETracker   | 30  | State-of-the-art accuracy      |
 | **Jetson Nano**     | YOLOv4 (Pre-trained)         | DeepSORT/KLT  | 4-5 | Low accuracy                   |
-| **Jetson Nano**     | YOLOv4-tiny (600 images)      | DeepSORT/KLT  | 14-15 | Improved FPS, inconsistent accuracy |
-| **Jetson Nano**     | YOLOv4-tiny (COCO dataset)    | DeepSORT/KLT  | 15  | Balanced FPS and accuracy      |
+| **Jetson Nano**     | YOLOv4-tiny (600 images)      | DeepSORT/KLT  | 12-15 | Improved FPS, inconsistent accuracy |
+| **Jetson Nano**     | YOLOv4-tiny (COCO dataset)    | DeepSORT/KLT  | 12-15  | Balanced FPS and accuracy      |
+
+
+---
 
 This comparison highlights the trade-offs between **accuracy** and **real-time performance** across platforms.
