@@ -73,11 +73,9 @@ Since running YOLOv8 + BYTETracker directly on Jetson Nano is impractical, this 
 | **Laptop (RTX GPU)** | YOLOv8n/s                    | BYTETracker   | 30  | State-of-the-art accuracy      |
 | **Jetson Nano**     | YOLOv4 (Pre-trained)         | DeepSORT/KLT  | 4-5 | Low accuracy                   |
 | **Jetson Nano**     | YOLOv4-tiny (600 images)      | DeepSORT/KLT  | 14-15 | Improved FPS, inconsistent accuracy |
-| **Jetson Nano**     | YOLOv4-tiny (COCO dataset)    | DeepSORT/KLT  | 15  | Balanced FPS and accuracy      |
+| **Jetson Nano**     | YOLOv4-tiny (COCO dataset)    | DeepSORT/KLT  | 14-15  | Balanced FPS and accuracy      |
 
 This comparison highlights the trade-offs between **accuracy** and **real-time performance** across platforms.
 
 ---
 
-## 📂 Repository Structure
-*(Add your repository structure here if needed.)*
