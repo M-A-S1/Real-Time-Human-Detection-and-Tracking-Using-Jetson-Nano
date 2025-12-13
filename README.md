@@ -79,6 +79,14 @@ The following demo shows the final results of YOLOv4-tiny (trained on the COCO d
 
 ---
 
+
+## 🎥 MOT with YOLOv4-tiny running on Jetson Nano DEMO
+The following demo shows the final results of MOT with YOLOv4-tiny running on Jetson Nano
+
+![Final Testing Video](output/motwithyolov4tiny_on_jetson.gif)
+
+---
+
 ## 📊 Performance Comparison: Laptop vs. Jetson Nano
 
 | Hardware          | Detector                     | Tracker       | FPS | Notes                          |
