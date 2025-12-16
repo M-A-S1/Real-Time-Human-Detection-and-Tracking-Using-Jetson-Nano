@@ -1,102 +1,154 @@
 # 🧍‍♂️ Real-Time Human Detection & Tracking
 
 ## 🚀 Overview
-Human detection and tracking are essential tasks in computer vision, enabling applications like surveillance, robotics, autonomous navigation, and crowd analytics.
+Human detection and tracking are fundamental problems in computer vision with applications in **surveillance, robotics, autonomous navigation, and crowd analytics**.
 
-This project evaluates **real-time multi-object human tracking** across two environments:
+This project presents a **comparative evaluation of real-time multi-object human tracking** across two hardware environments:
 
-1. **Laptop (RTX GPU):**
-   Running **YOLOv8 + BYTETracker** for high accuracy and smooth tracking.
+1. **Laptop (RTX GPU)**  
+   → High-accuracy pipeline using **YOLOv8 + BYTETracker**
 
-2. **Jetson Nano (Edge Device):**
-   Deploying the optimized **FastMOT** pipeline to achieve real-time performance under computational constraints.
+2. **Jetson Nano (Edge Device)**  
+   → Resource-efficient pipeline using **YOLOv4-tiny + FastMOT**
 
-The goal is to compare **accuracy, inference speed, and deployment feasibility** between high-end hardware and embedded systems.
-
----
-
-## 🎯 Progress and Results
-
-### **1. Laptop (RTX GPU) Implementation**
-- **Pipeline:** YOLOv8 + BYTETracker
-- **Performance:** Achieved **30 FPS** with state-of-the-art accuracy.
-- **Outcome:** High-accuracy human detection and stable multi-object tracking.
-
-### **2. Jetson Nano Deployment**
-- **Initial Implementation:** FastMOT with pre-trained YOLOv4 (human dataset).
-  - **Performance:** 4-5 FPS, but poor accuracy in diverse scenes.
-- **First Optimization:** Trained YOLOv4-tiny on a custom dataset (600 images from Roboflow).
-  - **Performance:** Improved to **14-15 FPS**, but accuracy remained inconsistent.
-- **Final Optimization:** Trained YOLOv4-tiny on the COCO dataset (4299 images) using **Google Colab**.
-  - **Performance:** Achieved **15 FPS** with significantly improved accuracy.
+The objective is to analyze the **accuracy–speed trade-off**, evaluate **detector and tracker performance**, and study **deployment feasibility on edge devices**.
 
 ---
 
-## 🧠 Laptop Pipeline (YOLOv8 + BYTETracker)
+## 🧠 Pipelines Overview
+
+### 💻 Laptop (RTX GPU)
+- **Detector:** YOLOv8 (Ultralytics)
+- **Tracker:** BYTETracker
+- **Frameworks:** PyTorch, OpenCV
+- **Goal:** State-of-the-art accuracy and stable multi-object tracking
+
+### 🟩 Jetson Nano (Edge Device)
+- **Detector:** YOLOv4 / YOLOv4-tiny
+- **Tracker:** FastMOT (DeepSORT / KLT + ReID)
+- **Acceleration:** TensorRT
+- **Goal:** Real-time performance under constrained compute
+
+---
+
+## 🧪 Detector Evaluation (YOLOv4-tiny)
+
+YOLOv4-tiny was trained on the **COCO human class subset (4299 images)** and evaluated using standard detection metrics.
+
+### 📊 Detection Metrics
+
+| Metric      | Value  |
+|------------|--------|
+| **AP (Class)** | 40.10 |
+| **Precision** | 0.70  |
+| **Recall**    | 0.35  |
+| **F1-score**  | 0.46  |
+| **mAP**       | 0.4009 |
+
+> **Observation:**  
+> The model achieves **high precision** with moderate recall, making it suitable for real-time tracking where false positives must be minimized.
+
+---
+
+### 📈 Detector Comparison (AP@0.5)
+The following graph compares **YOLOv4-tiny**, **YOLOv7-tiny**, and **YOLOv7** at AP@0.5:
+
+![AP Comparison](output/ap_comparison.png)
+
+---
+
+### 🧩 Confusion Matrix (YOLOv4-tiny)
+The confusion matrix below illustrates true positives, false positives, and missed detections:
+
+![Confusion Matrix](output/confusion_matrix_yolov4tiny.png)
+
+---
+
+## 🧠 Laptop Pipeline: YOLOv8 + BYTETracker
 **Components:**
-- **YOLOv8 (Ultralytics):** Real-time deep-learning object detector
-- **BYTETracker:** Robust low-ID-switch multi-object tracker
+- **YOLOv8:** High-accuracy real-time object detector
+- **BYTETracker:** Robust data association with minimal ID switches
 - **OpenCV:** Visualization and video processing
 
-This configuration is close to state-of-the-art and ideal for benchmarking accuracy.
-
----
-
-## 🎥 State-of-the-Art MOT Results (Laptop)
-The following demo shows YOLOv8 + BYTETracker running on a laptop GPU:
-
+### 🎥 State-of-the-Art MOT Demo
 ![State of the Art Demo](output/state_of_the_art.gif)
 
-This pipeline provides:
-- High-accuracy human detection
-- Stable multi-object ID tracking
-- Real-time performance on standard desktop hardware
+**Key Characteristics:**
+- High detection accuracy
+- Stable identity preservation
+- ~30 FPS on RTX GPU
 
 ---
 
-## 🟩 Jetson Nano Deployment (FastMOT)
-Since running YOLOv8 + BYTETracker directly on Jetson Nano is impractical, this project uses **[FastMOT](https://github.com/GeekAlexis/FastMOT)**, a lightweight and optimized tracking framework for edge devices.
+## 🟩 Jetson Nano Deployment: FastMOT
 
-### **FastMOT Features:**
-- **TensorRT Acceleration:** Optimized for NVIDIA Jetson platforms, enabling faster inference.
-- **Lightweight Tracking:** Uses a combination of **DeepSORT**, **KLT (Kanade-Lucas-Tomasi)**, and **ReID (Re-Identification)** for efficient tracking.
-- **Modular Design:** Supports multiple detectors (YOLOv4, YOLOv4-tiny, etc.) and tracking algorithms.
-- **Real-Time Performance:** Designed to run efficiently on resource-constrained devices like the Jetson Nano.
+Due to hardware constraints, YOLOv8 is not feasible on Jetson Nano. Instead, **FastMOT** is used as a lightweight MOT framework.
 
-### **FastMOT Pipeline:**
-1. **Detector:** YOLOv4-tiny (optimized for speed and accuracy balance).
-2. **Tracker:** DeepSORT or KLT for object association.
-3. **Post-Processing:** OpenCV for visualization and output.
+🔗 **FastMOT Repository:** https://github.com/GeekAlexis/FastMOT
 
-🔗 **[FastMOT GitHub Repository](https://github.com/GeekAlexis/FastMOT)**
+### 🔧 FastMOT Features
+- TensorRT-optimized inference
+- Hybrid tracking using **DeepSORT, KLT, and ReID**
+- Designed for embedded NVIDIA platforms
 
 ---
 
-## 🎥 YOLOv4-tiny trained on COCO tested standalone on Colab 
-The following demo shows the final results of YOLOv4-tiny (trained on the COCO dataset) running on Colab:
-
-![Final Testing Video](output/yolov4_tiny.gif)
+### 🎥 YOLOv4-tiny Standalone Testing (Colab)
+![YOLOv4-tiny Demo](output/yolov4_tiny.gif)
 
 ---
 
-
-## 🎥 FastMOT with YOLOv4-tiny running on Jetson Nano DEMO
-The following demo shows the final results of MOT with YOLOv4-tiny running on Jetson Nano
-
-![Final Testing Video](output/motwithyolov4tiny_on_jetson.gif)
+### 🎥 FastMOT + YOLOv4-tiny on Jetson Nano
+![FastMOT Jetson Demo](output/motwithyolov4tiny_on_jetson.gif)
 
 ---
 
-## 📊 Performance Comparison: Laptop vs. Jetson Nano
+## 📊 Multi-Object Tracking Evaluation (Jetson Nano)
 
-| Hardware          | Detector                     | Tracker       | FPS | Notes                          |
-|-------------------|------------------------------|---------------|-----|--------------------------------|
-| **Laptop (RTX GPU)** | YOLOv8n/s                    | BYTETracker   | 30  | State-of-the-art accuracy      |
-| **Jetson Nano**     | YOLOv4 (Pre-trained)         | DeepSORT/KLT  | 4-5 | Low accuracy                   |
-| **Jetson Nano**     | YOLOv4-tiny (600 images)      | DeepSORT/KLT  | 12-15 | Improved FPS, inconsistent accuracy |
-| **Jetson Nano**     | YOLOv4-tiny (COCO dataset)    | DeepSORT/KLT  | 12-15  | Balanced FPS and accuracy      |
+### 🔹 Tracking Results on Jetson Nano
 
+| Dataset | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
+|-------|----------|----------|----------|----------|----|----|
+| **MOT17 (Pedestrian)** | 50.60 | 61.74 | 51.23 | 85.13 | 78 | 158 |
+| **MOT20 (Pedestrian)** | 55.22 | 48.95 | 41.11 | 84.79 | 443 | 377 |
 
 ---
 
-This comparison highlights the trade-offs between **accuracy** and **real-time performance** across platforms.
+### 🔹 Reference: FastMOT Original Results (MOT20)
+
+| Method | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
+|------|----------|----------|----------|----------|----|----|
+| **FastMOT (Original)** | 66.8 | 56.4 | 45.0 | 79.3 | 912 | 274 |
+
+> **Note:**  
+> Performance gap is expected due to **hardware limitations**, **custom-trained detector**, and **real-world deployment conditions**.
+
+---
+
+### 📈 MOT17 & MOT20 Tracking Curves
+The following plots show tracking performance trends on MOT17 and MOT20:
+
+![MOT17 Results](output/mot17_results.png)
+![MOT20 Results](output/mot20_results.png)
+
+---
+
+## ⚖️ Performance Comparison
+
+| Hardware | Detector | Tracker | FPS | Notes |
+|--------|----------|---------|-----|------|
+| **Laptop (RTX GPU)** | YOLOv8 | BYTETracker | ~30 | State-of-the-art accuracy |
+| **Jetson Nano** | YOLOv4 (Pre-trained) | FastMOT | 4–5 | Low accuracy |
+| **Jetson Nano** | YOLOv4-tiny (600 imgs) | FastMOT | 12–15 | Improved FPS, unstable |
+| **Jetson Nano** | YOLOv4-tiny (COCO – 4299 imgs) | FastMOT | 12–15 | Best balance |
+
+---
+
+## 🏁 Conclusion
+- **YOLOv8 + BYTETracker** provides superior accuracy but requires powerful GPUs.
+- **YOLOv4-tiny + FastMOT** achieves **real-time tracking on edge devices** with acceptable accuracy.
+- Results highlight the **trade-off between performance and deployability**.
+
+This project demonstrates an end-to-end **detector–tracker evaluation pipeline** suitable for both research and real-world edge deployment.
+
+---
