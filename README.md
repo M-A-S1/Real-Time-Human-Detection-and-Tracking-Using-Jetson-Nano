@@ -114,6 +114,17 @@ Illustrates true positives, false positives, and missed detections:
 
 ---
 
+### 🔹 Reference: Original FastMOT Results (MOT20)
+
+| Method | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
+|------|----------|----------|----------|----------|----|----|
+| **FastMOT (Original)** | 66.8 | 56.4 | 45.0 | 79.3 | 912 | 274 |
+
+> **Note:**  
+> Performance gap is expected due to **hardware constraints**, **custom-trained detector**, and **real-world deployment conditions**.
+
+---
+
 ### 🎥 MOT17 Real-Time Tracking on Jetson Nano (~10 FPS)
 The following GIF shows **FastMOT + YOLOv4-tiny** running on **MOT17** in real time on Jetson Nano:
 
@@ -131,16 +142,6 @@ Sample frames demonstrating tracking performance on **MOT20**, highlighting dens
 
 ---
 
-### 🔹 Reference: Original FastMOT Results (MOT20)
-
-| Method | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
-|------|----------|----------|----------|----------|----|----|
-| **FastMOT (Original)** | 66.8 | 56.4 | 45.0 | 79.3 | 912 | 274 |
-
-> **Note:**  
-> Performance gap is expected due to **hardware constraints**, **custom-trained detector**, and **real-world deployment conditions**.
-
----
 
 ### 📈 MOT17 & MOT20 Tracking Curves
 Tracking performance trends:
