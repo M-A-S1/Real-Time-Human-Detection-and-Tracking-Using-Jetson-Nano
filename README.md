@@ -61,7 +61,7 @@ Due to hardware constraints, YOLOv8 is not feasible on Jetson Nano. Instead, **F
 ---
 
 ### 📉 YOLOv4-tiny Training Curves
-The following plot shows the **training and validation curves** for YOLOv4-tiny, including loss convergence and performance stabilization over epochs.
+The following plot shows the **training curve** for YOLOv4-tiny, depicting loss over epochs.
 
 ![YOLO Training Curves](output/yolo_train.png)
 
