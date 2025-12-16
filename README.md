@@ -113,28 +113,6 @@ Illustrates true positives, false positives, and missed detections:
 
 ---
 
-## 📊 Multi-Object Tracking Evaluation (Jetson Nano)
-
-### 🔹 Quantitative Tracking Results
-
-| Dataset | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
-|-------|----------|----------|----------|----------|----|----|
-| **MOT17 (Pedestrian)** | 50.60 | 61.74 | 51.23 | 85.13 | 78 | 158 |
-| **MOT20 (Pedestrian)** | 55.22 | 48.95 | 41.11 | 84.79 | 443 | 377 |
-
----
-
-### 🔹 Reference: Original FastMOT Results (MOT20)
-
-| Method | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
-|------|----------|----------|----------|----------|----|----|
-| **FastMOT (Original)** | 66.8 | 56.4 | 45.0 | 79.3 | 912 | 274 |
-
-> **Note:**  
-> Performance gap is expected due to **hardware constraints**, **custom-trained detector**, and **real-world deployment conditions**.
-
----
-
 ### 🎥 MOT17 Real-Time Tracking on Jetson Nano (~10 FPS)
 The following GIF shows **FastMOT + YOLOv4-tiny** running on **MOT17** in real time on Jetson Nano:
 
@@ -161,6 +139,29 @@ Tracking performance trends:
 ![MOT20 Results](output/mot2.jpeg)
 
 ---
+
+## 📊 Multi-Object Tracking Evaluation (Jetson Nano)
+
+### 🔹 Quantitative Tracking Results
+
+| Dataset | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
+|-------|----------|----------|----------|----------|----|----|
+| **MOT17 (Pedestrian)** | 50.60 | 61.74 | 51.23 | 85.13 | 78 | 158 |
+| **MOT20 (Pedestrian)** | 55.22 | 48.95 | 41.11 | 84.79 | 443 | 377 |
+
+---
+
+### 🔹 Reference: Original FastMOT Results (MOT20)
+
+| Method | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
+|------|----------|----------|----------|----------|----|----|
+| **FastMOT (Original)** | 66.8 | 56.4 | 45.0 | 79.3 | 912 | 274 |
+
+> **Note:**  
+> Performance gap is expected due to **hardware constraints**, **custom-trained detector**, and **real-world deployment conditions**.
+
+---
+
 
 ## ⚖️ Performance Comparison
 
