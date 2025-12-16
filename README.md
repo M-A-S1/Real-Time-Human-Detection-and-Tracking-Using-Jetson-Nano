@@ -28,7 +28,7 @@ The objective is to analyze the **accuracy–speed trade-off**, evaluate **detec
 - **Tracker:** FastMOT (DeepSORT / KLT + ReID)
 - **Acceleration:** TensorRT
 - **Goal:** Real-time performance under constrained compute
-- 
+
 ---
 
 ## 🧠 Laptop Pipeline: YOLOv8 + BYTETracker
@@ -41,9 +41,9 @@ The objective is to analyze the **accuracy–speed trade-off**, evaluate **detec
 ![State of the Art Demo](output/state_of_the_art.gif)
 
 **Key Characteristics:**
-- High detection accuracy
-- Stable identity preservation
-- ~30 FPS on RTX GPU
+- High detection accuracy  
+- Stable identity preservation  
+- ~30 FPS on RTX GPU  
 
 ---
 
@@ -54,9 +54,9 @@ Due to hardware constraints, YOLOv8 is not feasible on Jetson Nano. Instead, **F
 🔗 **FastMOT Repository:** https://github.com/GeekAlexis/FastMOT
 
 ### 🔧 FastMOT Features
-- TensorRT-optimized inference
-- Hybrid tracking using **DeepSORT, KLT, and ReID**
-- Designed for embedded NVIDIA platforms
+- TensorRT-optimized inference  
+- Hybrid tracking using **DeepSORT, KLT, and ReID**  
+- Designed for embedded NVIDIA platforms  
 
 ---
 
@@ -76,37 +76,36 @@ YOLOv4-tiny was trained on the **COCO human class subset (4299 images)** and eva
 
 ### 📊 Detection Metrics
 
-| Metric      | Value  |
-|------------|--------|
+| Metric | Value |
+|------|------|
 | **AP (Class)** | 40.10 |
-| **Precision** | 0.70  |
-| **Recall**    | 0.35  |
-| **F1-score**  | 0.46  |
-| **mAP**       | 0.4009 |
+| **Precision** | 0.70 |
+| **Recall** | 0.35 |
+| **F1-score** | 0.46 |
+| **mAP** | 0.4009 |
 
 > **Observation:**  
-> The model achieves **high precision** with moderate recall, making it suitable for real-time tracking where false positives must be minimized.
+> The detector favors **precision over recall**, which is desirable for tracking pipelines where false positives degrade ID consistency.
 
 ---
 
 ### 📈 Detector Comparison (AP@0.5)
-The following graph compares **YOLOv4-tiny**, **YOLOv7-tiny**, and **YOLOv7** at AP@0.5:
+Comparison of **YOLOv4-tiny**, **YOLOv7-tiny**, and **YOLOv7**:
 
 ![AP Comparison](output/AP_yolo.png)
 
 ---
 
 ### 🧩 Confusion Matrix (YOLOv4-tiny)
-The confusion matrix below illustrates true positives, false positives, and missed detections:
+Illustrates true positives, false positives, and missed detections:
 
 ![Confusion Matrix](output/yolo_confusion.png)
-
 
 ---
 
 ## 📊 Multi-Object Tracking Evaluation (Jetson Nano)
 
-### 🔹 Tracking Results on Jetson Nano
+### 🔹 Quantitative Tracking Results
 
 | Dataset | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
 |-------|----------|----------|----------|----------|----|----|
@@ -115,19 +114,36 @@ The confusion matrix below illustrates true positives, false positives, and miss
 
 ---
 
-### 🔹 Reference: FastMOT Original Results (MOT20)
+### 🎥 MOT17 Real-Time Tracking on Jetson Nano (~10 FPS)
+The following GIF shows **FastMOT + YOLOv4-tiny** running on **MOT17** in real time on Jetson Nano:
+
+![MOT17 Jetson GIF](output/motwithyolov4tiny_on_jetson.gif)
+
+---
+
+### 🖼️ MOT20 Qualitative Results
+Sample frames demonstrating tracking performance on **MOT20**, highlighting dense pedestrian scenes:
+
+![MOT20 Sample 1](output/1.jpg)
+![MOT20 Sample 2](output/2.jpg)
+![MOT20 Sample 1](output/3.jpg)
+![MOT20 Sample 2](output/4.jpg)
+
+---
+
+### 🔹 Reference: Original FastMOT Results (MOT20)
 
 | Method | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
 |------|----------|----------|----------|----------|----|----|
 | **FastMOT (Original)** | 66.8 | 56.4 | 45.0 | 79.3 | 912 | 274 |
 
 > **Note:**  
-> Performance gap is expected due to **hardware limitations**, **custom-trained detector**, and **real-world deployment conditions**.
+> Performance gap is expected due to **hardware constraints**, **custom-trained detector**, and **real-world deployment conditions**.
 
 ---
 
 ### 📈 MOT17 & MOT20 Tracking Curves
-The following plots show tracking performance trends on MOT17 and MOT20:
+Tracking performance trends:
 
 ![MOT17 Results](output/mot1.jpeg)
 ![MOT20 Results](output/mot2.jpeg)
@@ -146,10 +162,10 @@ The following plots show tracking performance trends on MOT17 and MOT20:
 ---
 
 ## 🏁 Conclusion
-- **YOLOv8 + BYTETracker** provides superior accuracy but requires powerful GPUs.
-- **YOLOv4-tiny + FastMOT** achieves **real-time tracking on edge devices** with acceptable accuracy.
-- Results highlight the **trade-off between performance and deployability**.
+- **YOLOv8 + BYTETracker** delivers superior accuracy but requires powerful GPUs.
+- **YOLOv4-tiny + FastMOT** enables **real-time multi-object tracking on edge devices**.
+- The project highlights the **accuracy–efficiency trade-off** crucial for embedded deployment.
 
-This project demonstrates an end-to-end **detector–tracker evaluation pipeline** suitable for both research and real-world edge deployment.
+This repository demonstrates an end-to-end **detector–tracker evaluation and deployment pipeline** suitable for both academic research and real-world edge applications.
 
 ---
