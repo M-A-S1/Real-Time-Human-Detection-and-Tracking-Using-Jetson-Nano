@@ -124,10 +124,10 @@ The following GIF shows **FastMOT + YOLOv4-tiny** running on **MOT17** in real t
 ### 🖼️ MOT20 Qualitative Results
 Sample frames demonstrating tracking performance on **MOT20**, highlighting dense pedestrian scenes:
 
-![MOT20 Sample 1](output/1.jpg)
-![MOT20 Sample 2](output/2.jpg)
-![MOT20 Sample 1](output/3.jpg)
-![MOT20 Sample 2](output/4.jpg)
+![MOT20 Sample 1](output/1.jpeg)
+![MOT20 Sample 2](output/2.jpeg)
+![MOT20 Sample 1](output/3.jpeg)
+![MOT20 Sample 2](output/4.jpeg)
 
 ---
 
