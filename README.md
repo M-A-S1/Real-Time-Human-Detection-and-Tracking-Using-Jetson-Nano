@@ -53,14 +53,14 @@ YOLOv4-tiny was trained on the **COCO human class subset (4299 images)** and eva
 ### 📈 Detector Comparison (AP@0.5)
 The following graph compares **YOLOv4-tiny**, **YOLOv7-tiny**, and **YOLOv7** at AP@0.5:
 
-![AP Comparison](output/ap_comparison.png)
+![AP Comparison](output/AP_yolo.png)
 
 ---
 
 ### 🧩 Confusion Matrix (YOLOv4-tiny)
 The confusion matrix below illustrates true positives, false positives, and missed detections:
 
-![Confusion Matrix](output/confusion_matrix_yolov4tiny.png)
+![Confusion Matrix](output/yolo_confusion.png)
 
 ---
 
@@ -128,8 +128,8 @@ Due to hardware constraints, YOLOv8 is not feasible on Jetson Nano. Instead, **F
 ### 📈 MOT17 & MOT20 Tracking Curves
 The following plots show tracking performance trends on MOT17 and MOT20:
 
-![MOT17 Results](output/mot17_results.png)
-![MOT20 Results](output/mot20_results.png)
+![MOT17 Results](output/mot1.png)
+![MOT20 Results](output/mot2.png)
 
 ---
 
