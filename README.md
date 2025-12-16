@@ -117,7 +117,7 @@ Illustrates true positives, false positives, and missed detections:
 ### 🎥 MOT17 Real-Time Tracking on Jetson Nano (~10 FPS)
 The following GIF shows **FastMOT + YOLOv4-tiny** running on **MOT17** in real time on Jetson Nano:
 
-![MOT17 Jetson GIF](output/motwithyolov4tiny_on_jetson.gif)
+![MOT17 Jetson GIF](output/mot_vid.gif)
 
 ---
 
