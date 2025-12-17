@@ -81,7 +81,7 @@ The COCO subset provides diverse human appearances and scales, while MOT17/MOT20
 ---
 
 ## 📉 YOLOv4-tiny Training Curves
-![YOLO Training Curves](output/yolo_train.png)
+![YOLO Training Curves](output/chart.png)
 
 > **Observation:**  
 > Stable convergence with no severe overfitting, validating training effectiveness on the COCO human subset.
