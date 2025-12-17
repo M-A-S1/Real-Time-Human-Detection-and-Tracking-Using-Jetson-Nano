@@ -72,7 +72,8 @@ Due to hardware constraints, YOLOv8 is not feasible on Jetson Nano. Instead, **F
 
 ## 📂 Dataset Used
 - **Training dataset:** COCO human (person class) subset  
-- **Training images:** 4,299  
+- **Training images:** 4,299 (1st dataset)
+- **Training images:** 7,785 (1st dataset)
 - **Evaluation datasets:** MOT17 and MOT20 (pedestrian class)
 
 The COCO subset provides diverse human appearances and scales, while MOT17/MOT20 enable standardized tracking evaluation in crowded scenes.
@@ -133,7 +134,7 @@ YOLOv4-tiny was trained on the **COCO human class subset (4,299 images)** and ev
 ---
 
 ## 📈 Detector Comparison (AP@0.5)
-![AP Comparison](output/AP_yolo.png)
+![AP Comparison](output/compare.png)
 
 > **Insight:**  
 > With AP above 83%, the custom-trained YOLOv4-tiny narrows the gap with heavier YOLO models while remaining edge-deployable.
@@ -141,7 +142,13 @@ YOLOv4-tiny was trained on the **COCO human class subset (4,299 images)** and ev
 ---
 
 ## 🧩 Confusion Matrix (YOLOv4-tiny)
-![Confusion Matrix](output/yolo_confusion.png)
+![Confusion Matrix](output/confusion.png)
+
+---
+
+
+## 🧩 Confusion Matrix Comparison
+![Confusion Matrix](output/confusion_compare.png)
 
 ---
 
