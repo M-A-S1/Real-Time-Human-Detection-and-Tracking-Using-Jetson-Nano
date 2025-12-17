@@ -180,7 +180,7 @@ This confirms that **detector quality is the dominant factor** in overall tracki
 
 | FastMOT Comparison| State of the Art Comparison |
 |--------|--------|
-| ![](output/Comparison_Results.jpeg) | ![](output/MOT.jpeg) |
+| ![](output/Comparison_Results.png) | ![](output/MOT.jpeg) |
 
 ---
 
