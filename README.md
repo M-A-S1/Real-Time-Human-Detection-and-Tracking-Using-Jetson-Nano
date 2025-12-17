@@ -176,9 +176,9 @@ This confirms that **detector quality is the dominant factor** in overall tracki
 
 ---
 
-## 📈 MOT17 & MOT20 Tracking Curves
-![MOT17 Results](output/mot1.jpeg)  
-![MOT20 Results](output/mot2.jpeg)
+## 📈 MOT17 & MOT20 Comparison with original FastMOT and 
+![MOT17 Results](output/Comparison_Results.png)  
+![MOT20 Results](output/MOT.jpeg)
 
 ---
 
