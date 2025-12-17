@@ -15,6 +15,17 @@ The objective is to analyze the **accuracy–speed trade-off**, evaluate **detec
 
 ---
 
+## 🏗️ Model Architecture and Motivation
+
+This project adopts a detector–tracker decoupled architecture tailored to hardware constraints.
+
+- **YOLOv8 + BYTETracker** is used on the RTX laptop to maximize detection accuracy and identity stability, leveraging strong GPU compute.
+- **YOLOv4-tiny + FastMOT** is used on Jetson Nano to enable real-time tracking under strict memory and power constraints.
+
+The architectural choices reflect a deliberate **accuracy–efficiency trade-off**, demonstrating how model complexity must scale with available hardware.
+
+---
+
 ## 🧠 Pipelines Overview
 
 ### 💻 Laptop (RTX GPU)
@@ -57,6 +68,16 @@ Due to hardware constraints, YOLOv8 is not feasible on Jetson Nano. Instead, **F
 - TensorRT-optimized inference  
 - Hybrid tracking using **DeepSORT, KLT, and ReID**  
 - Designed for embedded NVIDIA platforms  
+
+---
+
+## 📂 Dataset Used
+
+- **Training dataset:** COCO human (person class) subset  
+- **Training images:** 4,299  
+- **Evaluation datasets:** MOT17 and MOT20 (pedestrian class)
+
+The COCO subset provides diverse human appearances, while MOT17/MOT20 enable standardized multi-object tracking evaluation under real-world crowd conditions.
 
 ---
 
@@ -113,6 +134,15 @@ Illustrates true positives, false positives, and missed detections:
 
 ---
 
+## 📐 Evaluation Metrics Explanation
+
+- **Precision:** Fraction of detected humans that are correct. High precision reduces false positives, which is critical for stable tracking.
+- **Recall:** Fraction of ground-truth humans that are detected. Lower recall indicates missed detections, common in lightweight models.
+- **F1-score:** Harmonic mean of precision and recall.
+- **Confusion Matrix:** Shows true positives, false positives, and false negatives. True negatives are not defined in object detection due to the vast background.
+
+---
+
 ### 🎥 MOT17 Real-Time Tracking on Jetson Nano (~10 FPS)
 The following GIF shows **FastMOT + YOLOv4-tiny** running on **MOT17** in real time on Jetson Nano:
 
@@ -162,6 +192,15 @@ Tracking performance trends:
 
 ---
 
+## 📚 Comparison with Related Work
+
+- **BYTETrack (ECCV 2022):** Achieves high IDF1 by associating both high- and low-confidence detections, performing best with strong detectors such as YOLOv8.
+- **DeepSORT:** Uses appearance embeddings to reduce ID switches but incurs higher computational cost.
+- **FairMOT:** Jointly learns detection and ReID, achieving strong identity preservation but requiring more compute and complex training.
+
+Compared to these methods, FastMOT prioritizes real-time embedded deployment, resulting in lower accuracy but significantly improved efficiency on edge devices.
+
+---
 
 ## ⚖️ Performance Comparison
 
@@ -174,6 +213,16 @@ Tracking performance trends:
 
 ---
 
+## ⚠️ Limitations
+
+- Reduced recall due to lightweight detector architecture.
+- Performance degradation in dense crowds and long occlusions (MOT20).
+- Strong dependency on detector quality for tracking stability.
+- High-accuracy pipeline requires GPU hardware and is not edge-deployable.
+
+---
+
+
 ## 🏁 Conclusion
 - **YOLOv8 + BYTETracker** delivers superior accuracy but requires powerful GPUs.
 - **YOLOv4-tiny + FastMOT** enables **real-time multi-object tracking on edge devices**.
@@ -182,3 +231,14 @@ Tracking performance trends:
 This repository demonstrates an end-to-end **detector–tracker evaluation and deployment pipeline** suitable for both academic research and real-world edge applications.
 
 ---
+
+## 🤖 Use of AI Tools
+
+AI tools such as ChatGPT were used as a **supportive aid** for:
+- Understanding code and how to run it
+- Evaluation metrics
+- Jetson debugging 
+- Structuring documentation
+
+All model training, experiments, evaluations, and results were performed independently. No AI tools were used to generate datasets, train models, or produce experimental results.
+
