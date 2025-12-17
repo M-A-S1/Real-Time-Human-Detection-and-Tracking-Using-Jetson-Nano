@@ -186,6 +186,8 @@ Tracking performance trends:
 | Method | MOTA (%) | IDF1 (%) | HOTA (%) | MOTP (%) | MT | ML |
 |------|----------|----------|----------|----------|----|----|
 | **FastMOT (Original)** | 66.8 | 56.4 | 45.0 | 79.3 | 912 | 274 |
+---
+![Comparison Results](output/Results.png)
 
 > **Note:**  
 > Performance gap is expected due to **hardware constraints**, **custom-trained detector**, and **real-world deployment conditions**.
